@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes'); // Import authRoutes
 
 // Load environment variables from .env file
 dotenv.config();
@@ -26,6 +27,9 @@ mongoose
 app.get('/', (req, res) => {
   res.send('🚀 Backend is working and connected to MongoDB!');
 });
+
+// Auth Routes
+app.use('/api/auth', authRoutes); // Enable /api/auth/register and /api/auth/login endpoints
 
 // Start server
 app.listen(PORT, () => {

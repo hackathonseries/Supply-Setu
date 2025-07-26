@@ -16,6 +16,7 @@ import Register from './pages/Register.jsx';
 import SupplierDashboard from './pages/SupplierDashboard.jsx';
 import VendorDashboard from './pages/VendorDashboard.jsx';
 
+
 const App = () => {
   return (
     <Router>
@@ -27,7 +28,6 @@ const App = () => {
           <Route path="/what-we-do" element={<WhatWeDo />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />

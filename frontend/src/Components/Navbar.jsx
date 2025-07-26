@@ -36,7 +36,7 @@ const Navbar = () => {
         {!isAuthenticated ? (
           <>
             <NavItem to="/login" label="Login" />
-            <NavItem to="/register" label="Register" />
+            
           </>
         ) : (
           <>

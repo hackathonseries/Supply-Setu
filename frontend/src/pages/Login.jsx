@@ -18,8 +18,9 @@ const Login = () => {
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
 
-      if (user.role === 'Supplier') navigate('/supplier-dashboard');
-      else if (user.role === 'Vendor') navigate('/vendor-dashboard');
+      // 👇 Check lowercase roles
+      if (user.role === 'supplier') navigate('/supplier-dashboard');
+      else if (user.role === 'vendor') navigate('/vendor-dashboard');
       else navigate('/');
 
     } catch (err) {

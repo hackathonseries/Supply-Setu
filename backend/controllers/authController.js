@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Supplier = require('../models/Supplier');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -29,6 +30,14 @@ exports.registerUser = async (req, res) => {
       role: role.toLowerCase(),
       password: hashedPassword,
     });
+
+    // If the user is a supplier, create a Supplier entry
+    if (newUser.role === 'supplier') {
+      await Supplier.create({
+        userId: newUser._id, // Link the supplier to the user
+        products: [], // Initialize with an empty products array
+      });
+    }
 
     res.status(201).json({
       message: 'User registered successfully',

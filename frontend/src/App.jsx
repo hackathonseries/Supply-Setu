@@ -15,6 +15,7 @@ import Contact from './pages/Contact';
 import Register from './pages/Register.jsx';
 import SupplierDashboard from './pages/SupplierDashboard.jsx';
 import VendorDashboard from './pages/VendorDashboard.jsx';
+import CreateProduct from './pages/CreateProduct.jsx';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+          <Route path='/create-product' element={<CreateProduct />} />
         </Routes>
       </div>
       <Footer />

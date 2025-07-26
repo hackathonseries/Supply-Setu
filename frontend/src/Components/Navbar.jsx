@@ -1,14 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/useAuth"; 
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user, isAuthenticated, logout } = useAuth();
 
-  // console.log(user);
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    logout();         
     navigate("/login");
   };
 
@@ -17,7 +16,7 @@ const Navbar = () => {
       {/* Left logo + name */}
       <div className="flex items-center space-x-3">
         <img
-          src="https://via.placeholder.com/40" // replace with your logo URL
+          src="https://placehold.co/40"
           alt="Logo"
           className="w-10 h-10 rounded-full object-cover"
         />
@@ -30,9 +29,9 @@ const Navbar = () => {
       <div className="space-x-4 text-sm font-medium text-gray-700 flex items-center">
         <Link to="/about">About</Link>
         <Link to="/what-we-do">What We Do</Link>
-        <Link to={"/products"}>Products</Link>
+        <Link to="/products">Products</Link>
 
-        {!user ? (
+        {!isAuthenticated ? (
           <>
             <Link
               to="/login"
@@ -48,16 +47,20 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          <div>
-            <Link to={`/${user.role}-dashboard`} className="mr-5">Dashboard</Link>
-
+          <>
+            <Link
+              to={`/${user.role}-dashboard`}
+              className="mr-3 text-green-700 hover:text-green-900"
+            >
+              Dashboard
+            </Link>
             <button
               onClick={handleLogout}
               className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
             >
               Logout
             </button>
-          </div>
+          </>
         )}
       </div>
     </nav>

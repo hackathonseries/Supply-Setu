@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // console.log(user);
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -13,55 +12,54 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 w-full z-50 px-6 py-3 flex justify-between items-center">
-      {/* Left logo + name */}
-      <div className="flex items-center space-x-3">
+    <nav className="w-full fixed top-0 left-0 z-50 px-6 py-3 flex justify-between items-center bg-transparent">
+      {/* Left: Logo */}
+      <div
+        className="flex items-center gap-3 cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         <img
-          src="https://via.placeholder.com/40" // replace with your logo URL
+          src="/logo1.png" // replace with your actual logo path
           alt="Logo"
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-20 h-20 rounded-full object-cover"
         />
-        <Link to="/" className="text-xl font-bold text-green-700">
-          HAC-ker
-        </Link>
       </div>
 
-      {/* Right side links */}
-      <div className="space-x-4 text-sm font-medium text-gray-700 flex items-center">
-        <Link to="/about">About</Link>
-        <Link to="/what-we-do">What We Do</Link>
-        <Link to={"/products"}>Products</Link>
+      {/* Right: Floating Buttons */}
+      <div className="flex flex-wrap gap-3 items-center text-sm font-semibold">
+        <NavItem to="/" label="Home" />
+        <NavItem to="/what-we-do" label="What We Do" />
+        <NavItem to="/get-involved" label="Get Involved" />
 
         {!user ? (
           <>
-            <Link
-              to="/login"
-              className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition duration-200"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="bg-green-100 text-green-700 px-3 py-1 rounded hover:bg-green-200 border border-green-600 transition duration-200"
-            >
-              Register
-            </Link>
+            <NavItem to="/login" label="Login" />
+            <NavItem to="/register" label="Register" />
           </>
         ) : (
-          <div>
-            <Link to={`/${user.role}-dashboard`} className="mr-5">Dashboard</Link>
-
+          <>
+            <NavItem to={`/${user.role}-dashboard`} label="Dashboard" />
             <button
               onClick={handleLogout}
-              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
+              className="bg-white text-black px-4 py-1.5 rounded-full hover:bg-gray-200 transition font-bold"
             >
               Logout
             </button>
-          </div>
+          </>
         )}
       </div>
     </nav>
   );
 };
+
+// ✅ Reusable NavItem styled as floating buttons
+const NavItem = ({ to, label }) => (
+  <NavLink
+    to={to}
+    className="bg-white text-black px-4 py-1.5 rounded-full hover:bg-gray-200 transition font-bold"
+  >
+    {label}
+  </NavLink>
+);
 
 export default Navbar;

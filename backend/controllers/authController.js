@@ -3,26 +3,26 @@ const Supplier = require('../models/Supplier');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Register a new user
+// new user aka register 
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, phone, role, password } = req.body;
 
-    // Basic validation
+    // jo input kar rahe hain usko validate kar raha hai 
     if (!name || !email || !phone || !role || !password) {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    // Check if email already exists
+    // Check karega agar email pehle se registered hai
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already registered' });
     }
 
-    // Hash the password
+    // password hashing for secutity
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user
+    // Creating new user
     const newUser = await User.create({
       name,
       email,
@@ -31,7 +31,7 @@ exports.registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    // If the user is a supplier, create a Supplier entry
+    // If the user is  supplier, create a Supplier entry
     if (newUser.role === 'supplier') {
       await Supplier.create({
         userId: newUser._id, // Link the supplier to the user

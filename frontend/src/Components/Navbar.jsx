@@ -1,14 +1,15 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
 
+  // console.log(user);
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/login');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   return (
@@ -20,13 +21,16 @@ const Navbar = () => {
           alt="Logo"
           className="w-10 h-10 rounded-full object-cover"
         />
-        <Link to="/" className="text-xl font-bold text-green-700">HAC-ker</Link>
+        <Link to="/" className="text-xl font-bold text-green-700">
+          HAC-ker
+        </Link>
       </div>
 
       {/* Right side links */}
       <div className="space-x-4 text-sm font-medium text-gray-700 flex items-center">
         <Link to="/about">About</Link>
         <Link to="/what-we-do">What We Do</Link>
+        <Link to={"/products"}>Products</Link>
 
         {!user ? (
           <>
@@ -44,12 +48,16 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
-          >
-            Logout
-          </button>
+          <div>
+            <Link to={`/${user.role}-dashboard`} className="mr-5">Dashboard</Link>
+
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
+            >
+              Logout
+            </button>
+          </div>
         )}
       </div>
     </nav>

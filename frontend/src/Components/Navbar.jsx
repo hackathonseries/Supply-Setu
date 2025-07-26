@@ -19,7 +19,7 @@ const Navbar = () => {
         onClick={() => navigate("/")}
       >
         <img
-          src="/logo1.png" // replace with your actual logo path
+          src="/logo1.png"
           alt="Logo"
           className="w-20 h-20 rounded-full object-cover"
         />
@@ -65,4 +65,3 @@ const NavItem = ({ to, label }) => (
 );
 
 export default Navbar;
-

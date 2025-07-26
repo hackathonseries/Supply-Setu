@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import VendorPage from './pages/VendorPage';
 import SupplierPage from './pages/SupplierPage';
 import Contact from './pages/Contact';
+import Register from './pages/Register.jsx';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/vendor" element={<VendorPage />} />
           <Route path="/supplier" element={<SupplierPage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
       <Footer />

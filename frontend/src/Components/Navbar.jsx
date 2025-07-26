@@ -30,6 +30,7 @@ const Navbar = () => {
       <div className="space-x-4 text-sm font-medium text-gray-700 flex items-center">
         <Link to="/about">About</Link>
         <Link to="/what-we-do">What We Do</Link>
+        <Link to={"/products"}>Products</Link>
 
         {!user ? (
           <>
@@ -48,7 +49,7 @@ const Navbar = () => {
           </>
         ) : (
           <div>
-            <Link to={`/${user.role}-dashboard`}>Dashboard</Link>
+            <Link to={`/${user.role}-dashboard`} className="mr-5">Dashboard</Link>
 
             <button
               onClick={handleLogout}

@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 // Auth Routes
 app.use("/api/auth", authRoutes); // Enable /api/auth/register and /api/auth/login endpoints
-app.use("/api/product", productRoutes);
+app.use("/api", productRoutes);
 
 // Start server
 app.listen(PORT, () => {

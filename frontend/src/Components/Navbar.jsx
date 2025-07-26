@@ -1,47 +1,62 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/useAuth"; 
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user, isAuthenticated, logout } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    logout();         
     navigate("/login");
   };
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 px-6 py-3 flex justify-between items-center bg-transparent">
-      {/* Left: Logo */}
-      <div
-        className="flex items-center gap-3 cursor-pointer"
-        onClick={() => navigate("/")}
-      >
+    <nav className="bg-white shadow-md fixed top-0 w-full z-50 px-6 py-3 flex justify-between items-center">
+      {/* Left logo + name */}
+      <div className="flex items-center space-x-3">
         <img
-          src="/logo1.png" // replace with your actual logo path
+          src="https://placehold.co/40"
           alt="Logo"
-          className="w-20 h-20 rounded-full object-cover"
+          className="w-10 h-10 rounded-full object-cover"
         />
+        <Link to="/" className="text-xl font-bold text-green-700">
+          HAC-ker
+        </Link>
       </div>
 
-      {/* Right: Floating Buttons */}
-      <div className="flex flex-wrap gap-3 items-center text-sm font-semibold">
-        <NavItem to="/" label="Home" />
-        <NavItem to="/what-we-do" label="What We Do" />
-        <NavItem to="/get-involved" label="Get Involved" />
+      {/* Right side links */}
+      <div className="space-x-4 text-sm font-medium text-gray-700 flex items-center">
+        <Link to="/about">About</Link>
+        <Link to="/what-we-do">What We Do</Link>
+        <Link to="/products">Products</Link>
 
-        {!user ? (
+        {!isAuthenticated ? (
           <>
-            <NavItem to="/login" label="Login" />
-            <NavItem to="/register" label="Register" />
+            <Link
+              to="/login"
+              className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition duration-200"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="bg-green-100 text-green-700 px-3 py-1 rounded hover:bg-green-200 border border-green-600 transition duration-200"
+            >
+              Register
+            </Link>
           </>
         ) : (
           <>
-            <NavItem to={`/${user.role}-dashboard`} label="Dashboard" />
+            <Link
+              to={`/${user.role}-dashboard`}
+              className="mr-3 text-green-700 hover:text-green-900"
+            >
+              Dashboard
+            </Link>
             <button
               onClick={handleLogout}
-              className="bg-white text-black px-4 py-1.5 rounded-full hover:bg-gray-200 transition font-bold"
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200"
             >
               Logout
             </button>
@@ -51,15 +66,5 @@ const Navbar = () => {
     </nav>
   );
 };
-
-// ✅ Reusable NavItem styled as floating buttons
-const NavItem = ({ to, label }) => (
-  <NavLink
-    to={to}
-    className="bg-white text-black px-4 py-1.5 rounded-full hover:bg-gray-200 transition font-bold"
-  >
-    {label}
-  </NavLink>
-);
 
 export default Navbar;

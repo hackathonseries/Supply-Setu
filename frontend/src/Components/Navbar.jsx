@@ -65,3 +65,4 @@ const NavItem = ({ to, label }) => (
 );
 
 export default Navbar;
+

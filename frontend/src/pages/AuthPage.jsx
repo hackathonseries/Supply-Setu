@@ -102,59 +102,59 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col lg:flex-row m-0 p-0">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-white">
       {/* Mobile Branding Header */}
-      <div className="lg:hidden bg-gradient-to-br from-green-400 to-green-600 text-white p-6 text-center">
-        <div className="mb-4">
-          <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-          </svg>
-          <h1 className="text-2xl font-bold mb-2">Welcome Back</h1>
-          <p className="text-sm opacity-90">Manage your supply chain efficiently</p>
+      <div className="lg:hidden bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 text-white p-8 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div className="relative z-10">
+          <div className="w-20 h-20 mx-auto mb-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+            <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <h1 className="text-3xl font-bold mb-3">Welcome Back</h1>
+          <p className="text-lg opacity-95">Manage your supply chain efficiently</p>
         </div>
       </div>
 
       {/* Left Column - Full Height Image (Desktop) */}
-      <div className="hidden lg:block lg:w-1/2 h-screen relative overflow-hidden m-0 p-0">
+      <div className="hidden lg:block lg:w-1/2 h-screen sticky top-0 relative overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
           alt="Grocery Supply Chain"
-          className="w-full h-full object-cover blur-sm m-0 p-0"
+          className="w-full h-full object-cover blur-sm"
         />
         {/* Overlay with content */}
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-12">
-          <div className="text-center text-white">
-            <div className="mb-8">
-              <svg className="w-24 h-24 mx-auto mb-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-              </svg>
-              <h1 className="text-4xl font-bold mb-4">Welcome Back</h1>
-              <p className="text-xl opacity-90">Manage your supply chain efficiently with our comprehensive platform</p>
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-16">
+          <div className="text-center text-white max-w-lg">
+            <div className="mb-12">
+              <h1 className="text-5xl font-bold mb-6 leading-tight">Welcome Back</h1>
+              <p className="text-xl opacity-95 leading-relaxed">Manage your supply chain efficiently with our comprehensive platform</p>
             </div>
-            <div className="space-y-4 text-left max-w-md mx-auto">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <div className="space-y-6 text-left">
+              <div className="flex items-center space-x-4">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span>Connect with suppliers and vendors</span>
+                <span className="text-lg">Connect with suppliers and vendors</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <div className="flex items-center space-x-4">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span>Track deliveries in real-time</span>
+                <span className="text-lg">Track deliveries in real-time</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <div className="flex items-center space-x-4">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span>Optimize your inventory management</span>
+                <span className="text-lg">Optimize your inventory management</span>
               </div>
             </div>
           </div>
@@ -162,31 +162,31 @@ const AuthPage = () => {
       </div>
 
       {/* Right Column - Authentication Forms */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12 bg-white h-screen overflow-y-auto">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-16 bg-white min-h-screen">
         <div className="w-full max-w-md">
           {/* Tab Navigation */}
           {activeTab !== 'forgot-password' && (
             <div className="flex bg-gray-100 rounded-lg p-1 mb-8">
-                             <button
-                 onClick={() => handleTabSwitch('login')}
-                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                   activeTab === 'login'
-                     ? 'bg-white text-green-600 shadow-sm'
-                     : 'text-gray-600 hover:text-gray-900'
-                 }`}
-               >
-                 Login
-               </button>
-               <button
-                 onClick={() => handleTabSwitch('register')}
-                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                   activeTab === 'register'
-                     ? 'bg-white text-green-600 shadow-sm'
-                     : 'text-gray-600 hover:text-gray-900'
-                 }`}
-               >
-                 Register
-               </button>
+              <button
+                onClick={() => handleTabSwitch('login')}
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                  activeTab === 'login'
+                    ? 'bg-green-500 text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Login
+              </button>
+              <button
+                onClick={() => handleTabSwitch('register')}
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
+                  activeTab === 'register'
+                    ? 'bg-green-500 text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Register
+              </button>
             </div>
           )}
 
@@ -243,7 +243,7 @@ const AuthPage = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-end">
                   <button
                     type="button"
                     onClick={() => setActiveTab('forgot-password')}
@@ -256,7 +256,7 @@ const AuthPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'Signing in...' : 'Sign in'}
                 </button>
@@ -361,7 +361,7 @@ const AuthPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'Creating account...' : 'Create account'}
                 </button>
@@ -394,20 +394,20 @@ const AuthPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'Sending...' : 'Send reset link'}
                 </button>
                 
-                                 <div className="text-center">
-                   <button
-                     type="button"
-                     onClick={() => handleTabSwitch('login')}
-                     className="text-sm text-green-600 hover:text-green-700 font-medium"
-                   >
-                     ← Back to login
-                   </button>
-                 </div>
+                <div className="text-center">
+                  <button
+                    type="button"
+                    onClick={() => handleTabSwitch('login')}
+                    className="text-sm text-green-600 hover:text-green-700 font-medium"
+                  >
+                    ← Back to login
+                  </button>
+                </div>
               </form>
             </div>
           )}

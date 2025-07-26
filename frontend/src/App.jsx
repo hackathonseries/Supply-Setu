@@ -7,7 +7,6 @@ import ProtectedRoute from './Components/ProtectedRoute.jsx';
 
 import Home from './pages/Home';
 import About from './pages/About';
-import WhatWeDo from './pages/WhatWeDo';
 import AuthPage from './pages/AuthPage';
 import Dashboard from './pages/Dashboard';
 import Contact from './pages/Contact';
@@ -27,7 +26,6 @@ const App = () => {
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/what-we-do" element={<WhatWeDo />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/register" element={<AuthPage />} />
           <Route path="/contact" element={<Contact />} />

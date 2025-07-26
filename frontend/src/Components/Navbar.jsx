@@ -28,15 +28,13 @@ const Navbar = () => {
       {/* Right: Links */}
       <div className="flex flex-wrap gap-3 items-center text-sm font-semibold">
         <NavItem to="/" label="Home" />
-        <NavItem to="/what-we-do" label="What We Do" />
         <NavItem to="/get-involved" label="Get Involved" />
-        <Link to="/about">About</Link>
-        <Link to="/products">Products</Link>
+        <NavItem to="/about" label="About" />
+        <NavItem to="/products" label="Products" />
 
         {!isAuthenticated ? (
           <>
             <NavItem to="/login" label="Login" />
-            
           </>
         ) : (
           <>

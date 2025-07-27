@@ -16,17 +16,19 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="  px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">SurplusHub</span>
-            </Link>
-          </div>
+  <Link to="/" className="flex items-center space-x-2">
+    <img
+      src="/logo2.png"
+      alt="SurplusHub Logo"
+      className="w-14 h-14 object-cover rounded-full border-2 shadow-md"
+    />
+    <span className="text-xl font-bold text-gray-900">SurplusHub</span>
+  </Link>
+</div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
@@ -116,13 +118,7 @@ const Navbar = () => {
                         Profile
                       </Link>
                       
-                      <Link
-                        to="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                        onClick={() => setIsProfileOpen(false)}
-                      >
-                        Profile Settings
-                      </Link>
+                      
                       
                       <button
                         onClick={handleLogout}

@@ -32,8 +32,8 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <input name="name" placeholder="Name" onChange={handleChange} className="w-full p-2 border" />
         <input name="email" placeholder="Email" onChange={handleChange} className="w-full p-2 border" />
-        <input name="phone" placeholder="Phone" onChange={handleChange} className="w-full p-2 border" />
         <input name="password" placeholder="Password" type="password" onChange={handleChange} className="w-full p-2 border" />
+        <input name="phone" placeholder="Phone" onChange={handleChange} className="w-full p-2 border" />
         <select name="role" onChange={handleChange} className="w-full p-2 border">
           <option value="">Select Role</option>
           <option value="Supplier">Supplier</option>

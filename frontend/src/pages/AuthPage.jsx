@@ -125,40 +125,58 @@ const AuthPage = () => {
           className="w-full h-full object-cover blur-sm"
         />
         {/* Overlay with content */}
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-16">
-          <div className="text-center text-white max-w-lg">
-            <div className="mb-12">
-              <h1 className="text-5xl font-bold mb-6 leading-tight">Welcome Back</h1>
-              <p className="text-xl opacity-95 leading-relaxed">Manage your supply chain efficiently with our comprehensive platform</p>
-            </div>
-            <div className="space-y-6 text-left">
-              <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <span className="text-lg">Connect with suppliers and vendors</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <span className="text-lg">Track deliveries in real-time</span>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <span className="text-lg">Optimize your inventory management</span>
-              </div>
-            </div>
-          </div>
+<div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-10 sm:p-16">
+  <div className="text-center text-white max-w-2xl">
+    {/* Heading */}
+    <div className="mb-12">
+      <h1 className="text-5xl sm:text-6xl font-extrabold font-serif tracking-wide mb-6 leading-tight drop-shadow-md">
+        Welcome Back
+      </h1>
+      <p className="text-xl sm:text-2xl font-light leading-relaxed opacity-90 tracking-wider">
+        Manage your supply chain efficiently with our comprehensive platform
+      </p>
+    </div>
+
+    {/* Features List */}
+    <div className="space-y-6 text-left">
+      {/* Feature 1 */}
+      <div className="flex items-center space-x-4">
+        <div className="w-10 h-10 bg-gradient-to-tr from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-md">
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
         </div>
+        <span className="text-lg sm:text-xl font-medium tracking-wide">
+          Connect with suppliers and vendors
+        </span>
+      </div>
+
+      {/* Feature 2 */}
+      <div className="flex items-center space-x-4">
+        <div className="w-10 h-10 bg-gradient-to-tr from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-md">
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
+        </div>
+        <span className="text-lg sm:text-xl font-medium tracking-wide">
+          Track deliveries in real-time
+        </span>
+      </div>
+
+      {/* Feature 3 */}
+      <div className="flex items-center space-x-4">
+        <div className="w-10 h-10 bg-gradient-to-tr from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-md">
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
+        </div>
+        <span className="text-lg sm:text-xl font-medium tracking-wide">
+          Optimize your inventory management
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
 
       {/* Right Column - Authentication Forms */}

@@ -2,6 +2,64 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/useAuth';
 import api from '../../api';
 
+const handleCheckout = async () => {
+  try {
+    if (!user || cart.length === 0) return;
+
+    const orderData = {
+      products: cart.map(item => ({
+        productId: item.product._id,
+        quantity: item.quantity
+      })),
+      seller: cart[0].product.supplier._id, // ✅ Added seller
+      buyer: user._id,                      // ✅ Added buyer
+      orderDetails: {
+        shippingAddress: 'Default shipping address',
+        billingAddress: 'Default billing address',
+        paymentMethod: 'Credit Card',
+        notes: 'Order from supplier marketplace'
+      }
+    };
+
+    // Step 1: Create the order on the server
+    const orderResponse = await api.post("/transactions/supplier/order", orderData);
+    const savedOrder = orderResponse.data.order;
+
+    // Step 2: Create Razorpay order
+    const razorpayResponse = await api.post("/transactions/razorpay/create-order", {
+      amount: savedOrder.totalAmount || 500 // Use actual amount or fallback
+    });
+
+    const { order } = razorpayResponse.data;
+
+    // Step 3: Open Razorpay payment popup
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: "Your App Name",
+      description: "Purchase from Supplier Marketplace",
+      order_id: order.id,
+      handler: async function (response) {
+        const verificationRes = await api.post("/transactions/razorpay/verify", response);
+        console.log("Payment verification:", verificationRes.data);
+      },
+      prefill: {
+        name: user.name,
+        email: user.email,
+      },
+      theme: {
+        color: "#3399cc"
+      }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  } catch (error) {
+    console.error("Checkout failed:", error.message);
+  }
+};
+
 const SupplierMarketplace = () => {
   const { user } = useAuth();
   const [products, setProducts] = useState([]);
@@ -107,18 +165,84 @@ const SupplierMarketplace = () => {
           quantity: item.quantity
         })),
         orderDetails: {
-          shippingAddress: 'Default shipping address', // You can add a form for this
+          shippingAddress: 'Default shipping address',
           billingAddress: 'Default billing address',
           paymentMethod: 'Credit Card',
           notes: 'Order from supplier marketplace'
         }
       };
 
-      await api.post('/transactions/supplier/order', orderData);
-      alert('Order placed successfully!');
-      setCart([]);
+      // Step 1: Create the order on the server
+      console.log('Creating order with data:', orderData);
+      const orderResponse = await api.post("/transactions/supplier/order", orderData);
+      console.log('Order response:', orderResponse.data);
+      const savedOrder = orderResponse.data.data;
+
+      // Step 2: Create Razorpay order
+      console.log('Creating Razorpay order with amount:', savedOrder.totalAmount);
+      const razorpayResponse = await api.post("/payment/create-order", {
+        amount: savedOrder.totalAmount,
+        items: cart.map(item => ({
+          name: item.product.name,
+          quantity: item.quantity,
+          price: item.product.price
+        })),
+        seller: cart[0].product.supplier._id,
+        transactionId: savedOrder._id
+      });
+      console.log('Razorpay response:', razorpayResponse.data);
+
+      const { orderId, amount, currency } = razorpayResponse.data;
+
+      // Step 3: Open Razorpay payment popup
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_zAH9zO8Co1kTn8',
+        amount: amount,
+        currency: currency,
+        name: "Street Food Supply Chain",
+        description: "Purchase from Supplier Marketplace",
+        order_id: orderId,
+        handler: async function (response) {
+          try {
+            const verificationRes = await api.post("/payment/verify-payment", {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              transactionId: savedOrder._id
+            });
+            
+            if (verificationRes.data.success) {
+              alert('Payment successful! Order confirmed.');
+              setCart([]);
+            } else {
+              alert('Payment verification failed. Please contact support.');
+            }
+          } catch (error) {
+            console.error('Payment verification error:', error);
+            alert('Payment verification failed. Please contact support.');
+          }
+        },
+        prefill: {
+          name: user.name,
+          email: user.email,
+        },
+        theme: {
+          color: "#10b981"
+        },
+        modal: {
+          ondismiss: function() {
+            setCheckoutLoading(false);
+          }
+        }
+      };
+
+      console.log('Opening Razorpay popup with options:', options);
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+      
     } catch (error) {
-      alert(error.response?.data?.message || 'Failed to place order');
+      console.error("Checkout failed:", error);
+      alert(error.response?.data?.message || 'Failed to process checkout');
     } finally {
       setCheckoutLoading(false);
     }

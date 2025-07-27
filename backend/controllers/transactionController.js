@@ -87,8 +87,21 @@ exports.createSupplierOrder = async (req, res) => {
     const { products, orderDetails } = req.body;
     const buyerId = req.user._id;
 
-    if (!products || products.length === 0) {
-      return res.status(400).json({ success: false, message: 'No products selected' });
+    console.log('Request body:', req.body);
+    console.log('User:', req.user);
+
+    if (!products || !Array.isArray(products) || products.length === 0) {
+      return res.status(400).json({ success: false, message: 'No products selected or invalid format' });
+    }
+
+    // Validate each product has required fields
+    for (const item of products) {
+      if (!item.productId || !item.quantity) {
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Each product must have productId and quantity' 
+        });
+      }
     }
 
     // Validate products and calculate total
@@ -129,11 +142,15 @@ exports.createSupplierOrder = async (req, res) => {
       });
     }
 
+    // Get the supplier ID from the first product
+    const firstProduct = await Product.findById(validatedProducts[0].product);
+    const supplierId = firstProduct.supplier;
+
     // Create transaction
     const transaction = await Transaction.create({
       transactionType: 'supplier_order',
       supplierProducts: validatedProducts,
-      seller: validatedProducts[0].product.supplier, // Assuming single supplier order
+      seller: supplierId,
       buyer: buyerId,
       totalAmount,
       orderDetails,
@@ -152,7 +169,7 @@ exports.createSupplierOrder = async (req, res) => {
     }
 
     // Send email notifications
-    const supplier = await User.findById(validatedProducts[0].product.supplier);
+    const supplier = await User.findById(supplierId);
     await sendEmail(
       supplier.email,
       'New Order Received',
@@ -173,7 +190,16 @@ exports.createSupplierOrder = async (req, res) => {
 
   } catch (error) {
     console.error('Create supplier order error:', error);
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    console.error('Error details:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    });
+    res.status(500).json({ 
+      success: false, 
+      message: 'Internal server error',
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong'
+    });
   }
 };
 

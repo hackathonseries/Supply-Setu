@@ -15,6 +15,8 @@ const startDailyBroadcast = require('./utils/dailyBroadcast');
 const deliveryLogRoutes = require('./routes/deliveryLogRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const bookingRoutes = require("./routes/bookingRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -59,6 +61,9 @@ startDailyBroadcast();
 app.use('/api/delivery/logs', deliveryLogRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use("/api/bookings", bookingRoutes);
+
+// Payment Routes
+app.use("/api/payment", paymentRoutes);
 // Start server
 app.listen(PORT, () => {
   console.log(`🌐 Server is running at http://localhost:${PORT}`);

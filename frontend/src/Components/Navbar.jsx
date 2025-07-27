@@ -22,11 +22,11 @@ const Navbar = () => {
           <div className="flex items-center">
   <Link to="/" className="flex items-center space-x-2">
     <img
-      src="/logo2.png"
+      src="/logo123.png"
       alt="SurplusHub Logo"
-      className="w-14 h-14 object-cover rounded-full border-2 shadow-md"
+      className="w-16 h-16 object-cover rounded-full border-2 shadow-md"
     />
-    <span className="text-xl font-bold text-[#064152]">SurplusHub</span>
+    <span className="text-xl font-bold text-[#064152]"></span>
   </Link>
 </div>
 
@@ -40,7 +40,7 @@ const Navbar = () => {
     <Link
       key={to}
       to={to}
-      className="text-white bg-black/30 hover:bg-gray/20 px-4 py-1 rounded-full transition-all duration-200 backdrop-blur-md"
+      className="text-white bg-black/30 px-4 py-1 rounded-full transition-all duration-200 backdrop-blur-md"
     >
       {label}
     </Link>
@@ -48,13 +48,13 @@ const Navbar = () => {
 
   {user?.role === 'vendor' && (
     <>
-      <Link to="/surplus-exchange" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+      <Link to="/surplus-exchange" className="text-white bg-black/30 px-4 py-1 rounded-full">
         Surplus Exchange
       </Link>
-      <Link to="/supplier-marketplace" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+      <Link to="/supplier-marketplace" className="text-white bg-black/30 px-4 py-1 rounded-full">
         Supplier Marketplace
       </Link>
-      <Link to="/transaction-history" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+      <Link to="/transaction-history" className="text-white bg-black/30 px-4 py-1 rounded-full">
         Transactions
       </Link>
     </>
@@ -62,10 +62,10 @@ const Navbar = () => {
 
   {user?.role === 'supplier' && (
     <>
-      <Link to="/create-product" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+      <Link to="/create-product" className="text-white bg-black/30 px-4 py-1 rounded-full">
         Add Product
       </Link>
-      <Link to="/create-delivery" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+      <Link to="/create-delivery" className="text-white bg-black/30 px-4 py-1 rounded-full">
         Create Delivery
       </Link>
     </>
@@ -81,7 +81,7 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
+                  className="flex items-center space-x-2 text-gray-600 transition-colors"
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
                     <span className="text-white font-medium text-sm">
@@ -106,7 +106,7 @@ const Navbar = () => {
                       
                       <Link
                         to={user.role === 'vendor' ? '/vendor-dashboard' : '/supplier-dashboard'}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-700 transition-colors"
                         onClick={() => setIsProfileOpen(false)}
                       >
                         Dashboard
@@ -114,7 +114,7 @@ const Navbar = () => {
                       
                       <Link
                         to="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-700 transition-colors"
                         onClick={() => setIsProfileOpen(false)}
                       >
                         Profile
@@ -124,7 +124,7 @@ const Navbar = () => {
                       
                       <button
                         onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 transition-colors"
                       >
                         Sign Out
                       </button>
@@ -142,7 +142,7 @@ const Navbar = () => {
                 </Link> */}
                 <Link
                   to="/register"
-                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg"
                 >
                   Sign Up
                 </Link>
@@ -152,7 +152,7 @@ const Navbar = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="md:hidden p-2 text-gray-600 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -165,21 +165,21 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
             <div className="space-y-2">
-            <Link to="/" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full transition-all duration-200 backdrop-blur-md"
+            <Link to="/" className="text-white bg-black/30 px-4 py-1 rounded-full transition-all duration-200 backdrop-blur-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-4 py-2 text-gray-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="block px-4 py-2 text-gray-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -190,21 +190,21 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/surplus-exchange"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-gray-600 transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Surplus Exchange
                   </Link>
                   <Link
                     to="/supplier-marketplace"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-gray-600 transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Supplier Marketplace
                   </Link>
                   <Link
                     to="/transaction-history"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-gray-600 transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Transactions
@@ -217,14 +217,14 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/create-product"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-gray-600 transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Add Product
                   </Link>
                   <Link
                     to="/create-delivery"
-                    className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-gray-600 transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Create Delivery

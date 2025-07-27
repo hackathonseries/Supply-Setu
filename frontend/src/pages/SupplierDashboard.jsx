@@ -82,7 +82,7 @@ const SupplierDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-white mt-20 shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div>
@@ -235,10 +235,10 @@ const SupplierDashboard = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-900">My Products</h2>
-              <button
-                onClick={() => window.location.href = '/create-product'}
-                className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl"
-              >
+                              <button
+                  onClick={() => window.location.href = '/create-product'}
+                  className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200 shadow-lg"
+                >
                 Add New Product
               </button>
             </div>
@@ -262,7 +262,7 @@ const SupplierDashboard = () => {
                       <span className="font-medium">Category:</span> {product.category}
                     </p>
                     <p className="text-sm text-gray-600">
-                      <span className="font-medium">Price:</span> ${product.price}/{product.unit}
+                      <span className="font-medium">Price:</span> ₹{product.price}/{product.unit}
                     </p>
                     <p className="text-sm text-gray-600">
                       <span className="font-medium">Stock:</span> {product.stockQuantity} {product.unit}
@@ -280,7 +280,7 @@ const SupplierDashboard = () => {
                   <div className="flex space-x-2">
                     <button
                       onClick={() => window.location.href = `/edit-product/${product._id}`}
-                      className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm"
+                      className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors font-medium text-sm"
                     >
                       Edit
                     </button>
@@ -288,8 +288,8 @@ const SupplierDashboard = () => {
                       onClick={() => handleToggleProductStatus(product._id)}
                       className={`flex-1 py-2 px-4 rounded-lg font-medium text-sm transition-colors ${
                         product.isActive 
-                          ? 'bg-red-600 text-white hover:bg-red-700' 
-                          : 'bg-green-600 text-white hover:bg-green-700'
+                          ? 'bg-red-600 text-white' 
+                          : 'bg-green-600 text-white'
                       }`}
                     >
                       {product.isActive ? 'Deactivate' : 'Activate'}
@@ -308,7 +308,7 @@ const SupplierDashboard = () => {
                 <p className="text-gray-500">Start by adding your first product to the marketplace</p>
                 <button
                   onClick={() => window.location.href = '/create-product'}
-                  className="mt-4 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+                  className="mt-4 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg"
                 >
                   Add Your First Product
                 </button>
@@ -367,7 +367,7 @@ const SupplierDashboard = () => {
                           <div className="text-sm text-gray-500">{order.buyer?.email}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                          ${order.totalAmount}
+                          ₹{order.totalAmount}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {new Date(order.createdAt).toLocaleDateString()}

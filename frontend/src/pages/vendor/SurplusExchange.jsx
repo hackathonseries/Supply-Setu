@@ -91,12 +91,12 @@ const SurplusExchange = () => {
         <div className="mb-8">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Surplus Exchange</h1>
+              <h1 className="mt-20 text-3xl font-bold text-gray-900 mb-2">Surplus Exchange</h1>
               <p className="text-gray-600">Buy and sell surplus materials with other vendors</p>
             </div>
             <button
               onClick={() => setShowPostModal(true)}
-              className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg"
             >
               Post Surplus
             </button>
@@ -106,7 +106,7 @@ const SurplusExchange = () => {
         {/* Surplus Marketplace */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {surplusPosts.map((surplus) => (
-            <div key={surplus._id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition-all duration-300">
+            <div key={surplus._id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all duration-300">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">{surplus.materialType}</h3>
                 <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
@@ -119,7 +119,7 @@ const SurplusExchange = () => {
                   <span className="font-medium">Quantity:</span> {surplus.quantity} units
                 </p>
                 <p className="text-sm text-gray-600">
-                  <span className="font-medium">Price:</span> ${surplus.pricePerUnit}/unit
+                  <span className="font-medium">Price:</span> ₹{surplus.pricePerUnit}/unit
                 </p>
                 <p className="text-sm text-gray-600">
                   <span className="font-medium">Location:</span> {surplus.location}
@@ -135,7 +135,7 @@ const SurplusExchange = () => {
               {surplus.vendor?._id !== user.id && (
                 <button
                   onClick={() => handleBookSurplus(surplus._id)}
-                  className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors font-medium"
+                  className="w-full bg-green-600 text-white py-2 px-4 rounded-lg transition-colors font-medium"
                 >
                   Book Now
                 </button>
@@ -163,7 +163,7 @@ const SurplusExchange = () => {
               <h2 className="text-2xl font-bold text-gray-900">Post Surplus</h2>
               <button
                 onClick={() => setShowPostModal(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -256,14 +256,14 @@ const SurplusExchange = () => {
                 <button
                   type="button"
                   onClick={() => setShowPostModal(false)}
-                  className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                  className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={posting}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-blue-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                  className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-medium focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {posting ? (
                     <div className="flex items-center justify-center">

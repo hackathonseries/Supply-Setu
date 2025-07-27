@@ -89,7 +89,7 @@ const CreateDelivery = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+        <div className="bg-white mt-20 rounded-2xl shadow-xl p-8 border border-gray-100">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Delivery Request</h1>
             <p className="text-gray-600">Schedule a delivery for your confirmed booking</p>
@@ -273,14 +273,14 @@ const CreateDelivery = () => {
               <button
                 type="button"
                 onClick={() => navigate('/supplier-dashboard')}
-                className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={loading || confirmedBookings.length === 0}
-                className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-blue-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-medium focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
                 {loading ? (
                   <div className="flex items-center justify-center">

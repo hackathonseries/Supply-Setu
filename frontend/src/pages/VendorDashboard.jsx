@@ -60,7 +60,7 @@ const VendorDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-white mt-20 shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div>
@@ -233,7 +233,7 @@ const VendorDashboard = () => {
                       <span className="font-medium">Quantity:</span> {post.quantity} units
                     </p>
                     <p className="text-sm text-gray-600">
-                      <span className="font-medium">Price:</span> ${post.pricePerUnit}/unit
+                      <span className="font-medium">Price:</span> ₹{post.pricePerUnit}/unit
                     </p>
                     <p className="text-sm text-gray-600">
                       <span className="font-medium">Location:</span> {post.location}
@@ -244,10 +244,10 @@ const VendorDashboard = () => {
                   </div>
 
                   <div className="flex space-x-2">
-                    <button className="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                    <button className="flex-1 bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm transition-colors">
                       Edit
                     </button>
-                    <button className="flex-1 bg-red-100 text-red-700 px-3 py-2 rounded-lg text-sm hover:bg-red-200 transition-colors">
+                    <button className="flex-1 bg-red-100 text-red-700 px-3 py-2 rounded-lg text-sm transition-colors">
                       Delete
                     </button>
                   </div>
@@ -264,7 +264,7 @@ const VendorDashboard = () => {
                 <p className="text-gray-500 mb-4">Start by adding your first surplus item</p>
                 <button 
                   onClick={() => window.location.href = '/add-surplus'}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg transition-colors"
                 >
                   Add Surplus Item
                 </button>

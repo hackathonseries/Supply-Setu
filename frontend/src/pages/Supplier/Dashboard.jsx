@@ -44,7 +44,7 @@ const SupplierDashboard = () => {
 
       <button
         onClick={() => navigate("/create-product")}
-        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mb-6"
+        className="bg-green-600 text-white px-4 py-2 rounded mb-6"
       >
         Add New Product
       </button>
@@ -58,7 +58,7 @@ const SupplierDashboard = () => {
           {products.map((product) => (
             <div
               key={product._id}
-              className="border rounded-lg p-4 shadow hover:shadow-md transition"
+              className="border rounded-lg p-4 shadow transition"
             >
               <img
                 src={product.images?.[0]?.url || "https://placehold.co/150"}
@@ -72,13 +72,13 @@ const SupplierDashboard = () => {
               <div className="mt-3 flex gap-2">
                 <button
                   onClick={() => navigate(`/edit-product/${product._id}`)}
-                  className="text-sm bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                  className="text-sm bg-blue-500 text-white px-3 py-1 rounded"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(product._id)}
-                  className="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                  className="text-sm bg-red-500 text-white px-3 py-1 rounded"
                 >
                   Delete
                 </button>

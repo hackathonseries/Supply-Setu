@@ -263,8 +263,8 @@ const SupplierMarketplace = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Supplier Marketplace</h1>
+        <div className="mb-20">
+          <h1 className="mt-20 text-3xl font-bold text-gray-900 mb-2">Supplier Marketplace</h1>
           <p className="text-gray-600">Browse and order products from suppliers</p>
         </div>
 
@@ -332,7 +332,7 @@ const SupplierMarketplace = () => {
             {/* Products Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div key={product._id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition-all duration-300">
+                <div key={product._id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 transition-all duration-300">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
                     <span className={`px-2 py-1 text-xs font-medium rounded-full ${
@@ -346,7 +346,7 @@ const SupplierMarketplace = () => {
                   
                   <div className="space-y-2 mb-4">
                     <p className="text-sm text-gray-600">
-                      <span className="font-medium">Price:</span> ${product.price}/{product.unit}
+                      <span className="font-medium">Price:</span> ₹{product.price}/{product.unit}
                     </p>
                     <p className="text-sm text-gray-600">
                       <span className="font-medium">Stock:</span> {product.stockQuantity} {product.unit}
@@ -360,10 +360,10 @@ const SupplierMarketplace = () => {
                   </div>
 
                   {product.isActive && (
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-                    >
+                                      <button
+                    onClick={() => addToCart(product)}
+                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors font-medium"
+                  >
                       Add to Cart
                     </button>
                   )}
@@ -396,25 +396,25 @@ const SupplierMarketplace = () => {
                       <div key={item.product._id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div className="flex-1">
                           <h4 className="font-medium text-gray-900">{item.product.name}</h4>
-                          <p className="text-sm text-gray-600">${item.product.price}/{item.product.unit}</p>
+                          <p className="text-sm text-gray-600">₹{item.product.price}/{item.product.unit}</p>
                         </div>
                         <div className="flex items-center space-x-2">
                           <button
                             onClick={() => updateCartQuantity(item.product._id, item.quantity - 1)}
-                            className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
+                            className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center"
                           >
                             -
                           </button>
                           <span className="w-8 text-center">{item.quantity}</span>
                           <button
                             onClick={() => updateCartQuantity(item.product._id, item.quantity + 1)}
-                            className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300"
+                            className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center"
                           >
                             +
                           </button>
                           <button
                             onClick={() => removeFromCart(item.product._id)}
-                            className="text-red-500 hover:text-red-700 ml-2"
+                            className="text-red-500 ml-2"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -428,13 +428,13 @@ const SupplierMarketplace = () => {
                   <div className="border-t pt-4">
                     <div className="flex justify-between items-center mb-4">
                       <span className="font-semibold text-gray-900">Total:</span>
-                      <span className="font-bold text-lg text-gray-900">${getCartTotal().toFixed(2)}</span>
+                      <span className="font-bold text-lg text-gray-900">₹{getCartTotal().toFixed(2)}</span>
                     </div>
 
                     <button
                       onClick={handleCheckout}
                       disabled={checkoutLoading}
-                      className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-green-600 hover:to-blue-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                      className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                     >
                       {checkoutLoading ? (
                         <div className="flex items-center justify-center">

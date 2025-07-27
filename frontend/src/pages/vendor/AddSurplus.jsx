@@ -92,7 +92,7 @@ const AddSurplus = () => {
 
               <div>
                 <label htmlFor="pricePerUnit" className="block text-sm font-medium text-gray-700 mb-2">
-                  Price Per Unit ($) *
+                  Price Per Unit (₹) *
                 </label>
                 <input
                   type="number"
@@ -147,17 +147,17 @@ const AddSurplus = () => {
             </div>
 
             <div className="flex space-x-4 pt-6">
-              <button
-                type="button"
-                onClick={() => navigate('/vendor-dashboard')}
-                className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-200 transition-colors"
-              >
+                              <button
+                  type="button"
+                  onClick={() => navigate('/vendor-dashboard')}
+                  className="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-medium transition-colors"
+                >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-medium hover:from-green-600 hover:to-blue-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 text-white py-3 px-6 rounded-lg font-medium focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
                 {loading ? (
                   <div className="flex items-center justify-center">

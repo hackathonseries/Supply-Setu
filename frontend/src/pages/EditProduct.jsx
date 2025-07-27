@@ -113,10 +113,10 @@ const EditProduct = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
-        >
+                        <button
+                  type="submit"
+                  className="bg-green-600 text-white px-6 py-2 rounded"
+                >
           Update Product
         </button>
       </form>

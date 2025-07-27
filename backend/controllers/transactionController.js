@@ -173,13 +173,13 @@ exports.createSupplierOrder = async (req, res) => {
     await sendEmail(
       supplier.email,
       'New Order Received',
-      `You have received a new order from ${req.user.name} for $${totalAmount}.`
+      `You have received a new order from ${req.user.name} for ₹${totalAmount}.`
     );
 
     await sendEmail(
       req.user.email,
       'Order Confirmed',
-      `Your order has been placed successfully. Total amount: $${totalAmount}.`
+      `Your order has been placed successfully. Total amount: ₹${totalAmount}.`
     );
 
     res.status(201).json({ 

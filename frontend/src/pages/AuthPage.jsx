@@ -247,7 +247,7 @@ const AuthPage = () => {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
                     >
                       {showPassword ? (
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -267,7 +267,7 @@ const AuthPage = () => {
                   <button
                     type="button"
                     onClick={() => setActiveTab('forgot-password')}
-                    className="text-sm text-green-600 hover:text-green-700 font-medium"
+                    className="text-sm text-green-600 font-medium"
                   >
                     Forgot password?
                   </button>
@@ -276,7 +276,7 @@ const AuthPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'Signing in...' : 'Sign in'}
                 </button>
@@ -362,7 +362,7 @@ const AuthPage = () => {
                     <button
                       type="button"
                       onClick={() => setShowRegisterPassword(!showRegisterPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
                     >
                       {showRegisterPassword ? (
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -381,7 +381,7 @@ const AuthPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'Creating account...' : 'Create account'}
                 </button>
@@ -414,7 +414,7 @@ const AuthPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'Sending...' : 'Send reset link'}
                 </button>
@@ -423,7 +423,7 @@ const AuthPage = () => {
                   <button
                     type="button"
                     onClick={() => handleTabSwitch('login')}
-                    className="text-sm text-green-600 hover:text-green-700 font-medium"
+                    className="text-sm text-green-600 font-medium"
                   >
                     ← Back to login
                   </button>

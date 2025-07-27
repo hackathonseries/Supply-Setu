@@ -11,4 +11,9 @@ router.post('/book/:id', protect, surplusController.bookSurplus);
 const { isVendor } = require('../middleware/authMiddleware');
 router.post('/post', protect, isVendor, surplusController.postSurplus);
 
+// Vendor-specific routes
+router.get('/vendor/:vendorId', protect, surplusController.getVendorSurplus);
+router.put('/:id', protect, isVendor, surplusController.updateSurplus);
+router.delete('/:id', protect, isVendor, surplusController.deleteSurplus);
+
 module.exports = router;

@@ -3,11 +3,13 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes"); // Import authRoutes
-const productRoutes = require("./routes/productRoute");
+const productRoutes = require("./routes/productRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
 const vendorRoutes = require('./routes/vendorRoutes');
 const supplierRoutes = require('./routes/supplierRoutes');
 const deliveryRoutes = require('./routes/deliveryRoutes');
 const surplusRoutes = require('./routes/surplusRoutes');
+const profileRoutes = require('./routes/profileRoutes');
 const startExpiryScheduler = require('./utils/expiryScheduler');
 const startDailyBroadcast = require('./utils/dailyBroadcast');
 const deliveryLogRoutes = require('./routes/deliveryLogRoutes');
@@ -38,13 +40,20 @@ app.get("/", (req, res) => {
   res.send("🚀 Backend is working and connected to MongoDB!");
 });
 
+// Test product routes
+app.get("/api/products/test", (req, res) => {
+  res.json({ message: "Product routes are working!" });
+});
+
 // Auth Routes
 app.use("/api/auth", authRoutes); // Enable /api/auth/register and /api/auth/login endpoints
-app.use("/api", productRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/transactions", transactionRoutes);
 app.use('/api/vendor', vendorRoutes);
 app.use('/api/supplier', supplierRoutes);
 app.use('/api/delivery', deliveryRoutes);
 app.use('/api/surplus', surplusRoutes);
+app.use('/api/profile', profileRoutes);
 startExpiryScheduler();
 startDailyBroadcast();
 app.use('/api/delivery/logs', deliveryLogRoutes);

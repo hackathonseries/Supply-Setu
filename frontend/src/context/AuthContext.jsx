@@ -52,6 +52,17 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  // Update user function - updates user data and localStorage
+  const updateUser = (userData) => {
+    setUser(userData);
+    
+    try {
+      localStorage.setItem('user', JSON.stringify(userData));
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
+  };
+
   // Check if user is authenticated
   const isAuthenticated = Boolean(token);
 
@@ -71,6 +82,7 @@ const AuthProvider = ({ children }) => {
       user, 
       login, 
       logout, 
+      updateUser,
       isAuthenticated 
     }), 
     [token, user, isAuthenticated]

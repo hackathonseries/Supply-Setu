@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/useAuth';
+// import { useAuth } from '../../context/useAuth';
 import api from '../../api';
 
 const AddSurplus = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [formData, setFormData] = useState({
     materialType: '',
     quantity: '',
@@ -30,6 +30,7 @@ const AddSurplus = () => {
 
     try {
       const response = await api.post('/surplus/post', formData);
+      console.log(response);
       alert('Surplus item posted successfully!');
       navigate('/vendor-dashboard');
     } catch (error) {

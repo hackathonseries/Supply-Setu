@@ -56,7 +56,7 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await api.post('http://localhost:5001/api/auth/login', loginData);
+      const res = await api.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/login`, loginData);
       const { token, user } = res.data;
       login(token, user);
       
@@ -75,7 +75,8 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await api.post('http://localhost:5001/api/auth/register', registerData);
+      const res = await api.post(`${process.env.VITE_BACKEND_BASE_URL}/api/auth/register`, registerData);
+      console.log(res);
       alert('Registered Successfully!');
       handleTabSwitch('login');
       setLoginData({ email: registerData.email, password: '' });
@@ -95,6 +96,7 @@ const AuthPage = () => {
       alert('Password reset link sent to your email!');
       handleTabSwitch('login');
     } catch (err) {
+      console.log(err);
       alert('Failed to send reset link. Please try again.');
     } finally {
       setIsLoading(false);

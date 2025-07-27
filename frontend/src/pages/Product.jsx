@@ -9,7 +9,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await api.get(`http://localhost:5001/api/product/${id}`);
+        const res = await api.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/product/${id}`);
         console.log(res);
         setLoading(false);
       } catch (error) {

@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post('http://localhost:5001/api/auth/login', formData);
+      const res = await api.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/login`, formData);
       const { token, user } = res.data;
 
       login(token, user); // 👈 Save token + user to context + localStorage

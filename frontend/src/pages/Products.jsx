@@ -9,7 +9,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/product/all");
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/product/all`);
         const processedProducts = res.data.map((product) => {
           const prices = product.suppliers.map((supplier) => supplier.price);
           const descriptions = product.suppliers.map((supplier) => supplier.description);

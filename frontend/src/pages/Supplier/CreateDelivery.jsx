@@ -75,6 +75,7 @@ const CreateDelivery = () => {
         pickupDetails: formData.pickupDetails,
         deliveryDetails: formData.deliveryDetails
       });
+      console.log(response);
 
       alert('Delivery request created successfully!');
       navigate('/supplier-dashboard');

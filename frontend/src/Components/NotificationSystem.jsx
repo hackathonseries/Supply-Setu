@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../context/useAuth';
+// import { useAuth } from '../context/useAuth';
 
 const NotificationSystem = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);

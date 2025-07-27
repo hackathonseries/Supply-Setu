@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/useAuth';
-import NotificationSystem from '../components/NotificationSystem';
+import NotificationSystem from '../Components/NotificationSystem';
 
 const Navbar = () => {
   const { user, logout } = useAuth();

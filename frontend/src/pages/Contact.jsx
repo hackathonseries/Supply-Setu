@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="min-h-screen bg-gradient-to-br from-[#f0f4ff] via-white to-[#fdf6ff] py-16 px-6">
       <div className="max-w-5xl mx-auto space-y-16">
         {/* Header */}
-        <div className="text-center">
+        <div className="text-center mt-20">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Contact SurplusConnect
           </h1>

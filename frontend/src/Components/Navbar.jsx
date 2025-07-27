@@ -15,8 +15,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
-      <div className="  px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent pointer-events-none">
+      <div className="px-4 sm:px-6 lg:px-8 pointer-events-auto">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -26,49 +26,51 @@ const Navbar = () => {
       alt="SurplusHub Logo"
       className="w-14 h-14 object-cover rounded-full border-2 shadow-md"
     />
-    <span className="text-xl font-bold text-gray-900">SurplusHub</span>
+    <span className="text-xl font-bold text-[#064152]">SurplusHub</span>
   </Link>
 </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Home
-            </Link>
-            <Link to="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
-              About
-            </Link>
-            <Link to="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Contact
-            </Link>
-            
-            {/* Vendor-specific links */}
-            {user?.role === 'vendor' && (
-              <>
-                <Link to="/surplus-exchange" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Surplus Exchange
-                </Link>
-                <Link to="/supplier-marketplace" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Supplier Marketplace
-                </Link>
-                <Link to="/transaction-history" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Transactions
-                </Link>
-              </>
-            )}
+          <div className="hidden md:flex items-center space-x-4">
+  {[
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact' },
+  ].map(({ to, label }) => (
+    <Link
+      key={to}
+      to={to}
+      className="text-white bg-black/30 hover:bg-gray/20 px-4 py-1 rounded-full transition-all duration-200 backdrop-blur-md"
+    >
+      {label}
+    </Link>
+  ))}
 
-            {/* Supplier-specific links */}
-            {user?.role === 'supplier' && (
-              <>
-                <Link to="/create-product" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Add Product
-                </Link>
-                <Link to="/create-delivery" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Create Delivery
-                </Link>
-              </>
-            )}
-          </div>
+  {user?.role === 'vendor' && (
+    <>
+      <Link to="/surplus-exchange" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+        Surplus Exchange
+      </Link>
+      <Link to="/supplier-marketplace" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+        Supplier Marketplace
+      </Link>
+      <Link to="/transaction-history" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+        Transactions
+      </Link>
+    </>
+  )}
+
+  {user?.role === 'supplier' && (
+    <>
+      <Link to="/create-product" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+        Add Product
+      </Link>
+      <Link to="/create-delivery" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full">
+        Create Delivery
+      </Link>
+    </>
+  )}
+</div>
 
           {/* User Menu */}
           <div className="flex items-center space-x-4">
@@ -132,12 +134,12 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center space-x-4">
-                <Link
+                {/* <Link
                   to="/login"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-gray-500 hover:text-gray-800 transition-colors"
                 >
                   Sign In
-                </Link>
+                </Link> */}
                 <Link
                   to="/register"
                   className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -163,9 +165,7 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
             <div className="space-y-2">
-              <Link
-                to="/"
-                className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+            <Link to="/" className="text-white bg-black/30 hover:bg-white/20 px-4 py-1 rounded-full transition-all duration-200 backdrop-blur-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home

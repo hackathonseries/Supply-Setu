@@ -27,7 +27,7 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <div className="min-h-screen pt-16">
+      <div className="">
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />

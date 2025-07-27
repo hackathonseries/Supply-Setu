@@ -94,7 +94,7 @@ const Home = () => {
   return (
     <div className="font-sans bg-[#F9FAFB] text-gray-900">
       {/* Hero Section */}
-      <section className="relative h-[96vh] flex items-center justify-center overflow-hidden bg-opacity-70">
+      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-opacity-70">
         <div className="absolute inset-0 w-full h-full" ref={sliderRef}>
           {sliderImages.map((img, idx) => (
             <div

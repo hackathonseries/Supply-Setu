@@ -15,6 +15,7 @@ const deliveryLogRoutes = require('./routes/deliveryLogRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const bookingRoutes = require("./routes/bookingRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 
 // Load environment variables from .env file
@@ -62,6 +63,9 @@ app.use("/api/bookings", bookingRoutes);
 
 // Payment Routes
 app.use("/api/payment", paymentRoutes);
+
+// Profile Routes
+app.use("/api/auth/profile", profileRoutes);
 // Start server
 app.listen(PORT, () => {
   console.log(`🌐 Server is running at http://localhost:${PORT}`);

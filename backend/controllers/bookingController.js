@@ -35,7 +35,7 @@ const bookItem = async (req, res) => {
 
     res.status(200).json({ message: "Booking successful & emails sent!" });
   } catch (error) {
-    console.error("❌ Booking error:", error);
+    console.error(" Booking error:", error);
     res.status(500).json({ error: "Server error during booking." });
   }
 };

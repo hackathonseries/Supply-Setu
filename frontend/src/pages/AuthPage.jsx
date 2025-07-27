@@ -75,7 +75,7 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await api.post(`${process.env.VITE_BACKEND_BASE_URL}/api/auth/register`, registerData);
+      const res = await api.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/register`, registerData);
       console.log(res);
       alert('Registered Successfully!');
       handleTabSwitch('login');

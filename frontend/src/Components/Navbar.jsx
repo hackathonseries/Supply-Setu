@@ -38,7 +38,11 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <NavItem to={`/${user.role}-dashboard`} label="Dashboard" />
+            {user ? (
+              <NavItem to={`/${user.role}-dashboard`} label="Dashboard" />
+            ) : (
+              <NavItem to="/dashboard" label="Dashboard" />
+            )}
             <button
               onClick={handleLogout}
               className="bg-white text-black px-4 py-1.5 rounded-full hover:bg-gray-200 transition font-bold"

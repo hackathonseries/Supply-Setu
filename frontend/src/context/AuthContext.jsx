@@ -58,11 +58,12 @@ const AuthProvider = ({ children }) => {
   // Optional: Check token validity on mount
   useEffect(() => {
     // Could be extended to check token validity with your backend
-    if (token) {
-      // You could add JWT expiry checking here
-      // Example: check if token is expired based on decoded payload
+    if (token && !user) {
+      // If we have a token but no user data, try to fetch user data or log out
+      console.warn("Token exists but user data is missing. This could cause UI issues.");
+      // Optional: You could redirect to login or attempt to fetch user data here
     }
-  }, [token]);
+  }, [token, user]);
 
   // Create memoized context value to prevent unnecessary re-renders
   const contextValue = React.useMemo(

@@ -21,7 +21,6 @@ import CreateProduct from './pages/CreateProduct.jsx';
 import EditProduct from './pages/EditProduct.jsx';
 import Products from './pages/Products.jsx';
 import Product from './pages/Product.jsx';
-import Profile from './pages/Profile.jsx';
 
 const App = () => {
   return (
@@ -139,7 +138,6 @@ const App = () => {
           />
 
           <Route path="/edit-product/:id" element={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         </Routes>
       </div>
       <Footer />

@@ -20,11 +20,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">SurplusHub</span>
+            <Link to="/" className="flex items-center space-x-3">
+              <img src="/logo2.png" alt="SurplusHub" className="w-10 h-10 object-contain" />
+              <span className="text-xl font-bold text-gray-900">Supply Setu</span>
             </Link>
           </div>
 
@@ -106,14 +104,6 @@ const Navbar = () => {
                         onClick={() => setIsProfileOpen(false)}
                       >
                         Dashboard
-                      </Link>
-                      
-                      <Link
-                        to="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-                        onClick={() => setIsProfileOpen(false)}
-                      >
-                        Profile
                       </Link>
                       
                       <button

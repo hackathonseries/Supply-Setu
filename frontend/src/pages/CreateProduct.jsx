@@ -9,7 +9,6 @@ const CreateProduct = () => {
   const [categories, setCategories] = useState([]);
   const [units, setUnits] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [dropdownsLoading, setDropdownsLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -53,71 +52,14 @@ const CreateProduct = () => {
 
   const fetchCategoriesAndUnits = async () => {
     try {
-      setDropdownsLoading(true);
-      console.log('Fetching categories and units...');
-      
       const [categoriesResponse, unitsResponse] = await Promise.all([
         api.get('/products/categories'),
         api.get('/products/units')
       ]);
-      
-      console.log('Categories response:', categoriesResponse.data);
-      console.log('Units response:', unitsResponse.data);
-      
       setCategories(categoriesResponse.data.data || []);
       setUnits(unitsResponse.data.data || []);
-      
-      console.log('Categories set:', categoriesResponse.data.data);
-      console.log('Units set:', unitsResponse.data.data);
-      
     } catch (error) {
       console.error('Error fetching categories and units:', error);
-      console.error('Error details:', error.response?.data);
-      
-      // Fallback data in case API fails
-      const fallbackCategories = [
-        { value: 'raw_materials', label: 'Raw Materials' },
-        { value: 'equipment', label: 'Equipment' },
-        { value: 'tools', label: 'Tools' },
-        { value: 'chemicals', label: 'Chemicals' },
-        { value: 'packaging', label: 'Packaging' },
-        { value: 'other', label: 'Other' }
-      ];
-      
-      const fallbackUnits = [
-        { value: 'kg', label: 'Kilogram (kg)' },
-        { value: 'ton', label: 'Ton' },
-        { value: 'piece', label: 'Piece' },
-        { value: 'liter', label: 'Liter' },
-        { value: 'meter', label: 'Meter' },
-        { value: 'box', label: 'Box' },
-        { value: 'set', label: 'Set' }
-      ];
-      
-      setCategories(fallbackCategories);
-      setUnits(fallbackUnits);
-      
-      console.log('Using fallback data for categories and units');
-      alert('Using fallback data for categories and units. Some features may not work properly.');
-    } finally {
-      setDropdownsLoading(false);
-    }
-  };
-
-  const testAPIEndpoints = async () => {
-    try {
-      console.log('Testing API endpoints...');
-      
-      const testCategories = await api.get('/products/categories');
-      console.log('Categories test response:', testCategories.data);
-      
-      const testUnits = await api.get('/products/units');
-      console.log('Units test response:', testUnits.data);
-      
-      alert('API endpoints are working! Check console for details.');
-    } catch (error) {
-      console.error('API test failed:', error);
-      alert('API test failed. Check console for details.');
     }
   };
 
@@ -201,23 +143,6 @@ const CreateProduct = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Debug Section */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <h3 className="text-sm font-medium text-yellow-800 mb-2">Debug Information</h3>
-              <div className="text-xs text-yellow-700 space-y-1">
-                <p>Categories loaded: {categories.length}</p>
-                <p>Units loaded: {units.length}</p>
-                <p>Dropdowns loading: {dropdownsLoading ? 'Yes' : 'No'}</p>
-                <button
-                  type="button"
-                  onClick={testAPIEndpoints}
-                  className="mt-2 px-3 py-1 bg-yellow-600 text-white text-xs rounded hover:bg-yellow-700"
-                >
-                  Test API Endpoints
-                </button>
-              </div>
-            </div>
-
             {/* Basic Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -247,15 +172,11 @@ const CreateProduct = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                 >
                   <option value="">Select Category</option>
-                  {dropdownsLoading ? (
-                    <option value="" disabled>Loading categories...</option>
-                  ) : (
-                    categories.map(category => (
-                      <option key={category.value} value={category.value}>
-                        {category.label}
-                      </option>
-                    ))
-                  )}
+                  {categories.map(category => (
+                    <option key={category.value} value={category.value}>
+                      {category.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -306,15 +227,11 @@ const CreateProduct = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
                 >
                   <option value="">Select Unit</option>
-                  {dropdownsLoading ? (
-                    <option value="" disabled>Loading units...</option>
-                  ) : (
-                    units.map(unit => (
-                      <option key={unit.value} value={unit.value}>
-                        {unit.label}
-                      </option>
-                    ))
-                  )}
+                  {units.map(unit => (
+                    <option key={unit.value} value={unit.value}>
+                      {unit.label}
+                    </option>
+                  ))}
                 </select>
               </div>
 

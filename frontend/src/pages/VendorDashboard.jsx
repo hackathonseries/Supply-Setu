@@ -173,7 +173,7 @@ const VendorDashboard = () => {
               <div className="p-6 border-b border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900">Recent Activity</h3>
               </div>
-              <div className="p-6">
+    <div className="p-6">
                 {bookings.slice(0, 5).map((booking) => (
                   <div key={booking._id} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-b-0">
                     <div className="flex items-center space-x-3">

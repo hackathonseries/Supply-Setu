@@ -121,9 +121,9 @@ const Home = () => {
           >
             Powering Smarter Supply Chains
           </h1>
-          <p className="text-lg md:text-xl text-white mb-8 drop-shadow-md">
+          {/* <p className="text-lg md:text-xl text-white mb-8 drop-shadow-md">
             Connect vendors. Reduce waste. Optimize logistics.
-          </p>
+          </p> */}
           <Link
             ref={ctaBtnRef}
             to="/get-started"

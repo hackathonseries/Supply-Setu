@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Analytics from './pages/vendor/Analytics.jsx'
 import AddSurplus from './pages/vendor/AddSurplus.jsx'
-import CreateDelivery from './pages/supplier/CreateDelivery.jsx'
+import CreateDelivery from './pages/Supplier/CreateDelivery.jsx'
 import SurplusExchange from './pages/vendor/SurplusExchange.jsx'
 import SupplierMarketplace from './pages/vendor/SupplierMarketplace.jsx'
 import TransactionHistory from './pages/vendor/TransactionHistory.jsx'

@@ -40,6 +40,85 @@ exports.viewAvailableSurplus = async (req, res) => {
   }
 };
 
+// Get vendor's surplus posts
+exports.getVendorSurplus = async (req, res) => {
+  try {
+    const { vendorId } = req.params;
+    
+    const surplusList = await SurplusPost.find({ vendor: vendorId })
+      .populate('bookedBy', 'name email')
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({ success: true, data: surplusList });
+  } catch (err) {
+    console.error('Get vendor surplus error:', err.message);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+// Update surplus item
+exports.updateSurplus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateData = req.body;
+
+    const surplus = await SurplusPost.findById(id);
+    if (!surplus) {
+      return res.status(404).json({ success: false, message: 'Surplus not found' });
+    }
+
+    // Check if user owns this surplus
+    if (surplus.vendor.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ success: false, message: 'Not authorized to update this surplus' });
+    }
+
+    // Don't allow updates if already booked
+    if (surplus.isBooked) {
+      return res.status(400).json({ success: false, message: 'Cannot update booked surplus' });
+    }
+
+    const updatedSurplus = await SurplusPost.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true, runValidators: true }
+    );
+
+    res.status(200).json({ success: true, message: 'Surplus updated successfully', data: updatedSurplus });
+  } catch (err) {
+    console.error('Update surplus error:', err.message);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+// Delete surplus item
+exports.deleteSurplus = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const surplus = await SurplusPost.findById(id);
+    if (!surplus) {
+      return res.status(404).json({ success: false, message: 'Surplus not found' });
+    }
+
+    // Check if user owns this surplus
+    if (surplus.vendor.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ success: false, message: 'Not authorized to delete this surplus' });
+    }
+
+    // Don't allow deletion if already booked
+    if (surplus.isBooked) {
+      return res.status(400).json({ success: false, message: 'Cannot delete booked surplus' });
+    }
+
+    await SurplusPost.findByIdAndDelete(id);
+
+    res.status(200).json({ success: true, message: 'Surplus deleted successfully' });
+  } catch (err) {
+    console.error('Delete surplus error:', err.message);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
 // Book a surplus item
 exports.bookSurplus = async (req, res) => {
   try {

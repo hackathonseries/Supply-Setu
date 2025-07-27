@@ -3,7 +3,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes"); // Import authRoutes
-const productRoutes = require("./routes/productRoute");
+const productRoutes = require("./routes/productRoutes");
+const transactionRoutes = require("./routes/transactionRoutes");
 const vendorRoutes = require('./routes/vendorRoutes');
 const supplierRoutes = require('./routes/supplierRoutes');
 const deliveryRoutes = require('./routes/deliveryRoutes');
@@ -13,6 +14,9 @@ const startDailyBroadcast = require('./utils/dailyBroadcast');
 const deliveryLogRoutes = require('./routes/deliveryLogRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const bookingRoutes = require("./routes/bookingRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const profileRoutes = require("./routes/profileRoutes");
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -38,9 +42,15 @@ app.get("/", (req, res) => {
   res.send("🚀 Backend is working and connected to MongoDB!");
 });
 
+// Test product routes
+app.get("/api/products/test", (req, res) => {
+  res.json({ message: "Product routes are working!" });
+});
+
 // Auth Routes
 app.use("/api/auth", authRoutes); // Enable /api/auth/register and /api/auth/login endpoints
-app.use("/api", productRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/transactions", transactionRoutes);
 app.use('/api/vendor', vendorRoutes);
 app.use('/api/supplier', supplierRoutes);
 app.use('/api/delivery', deliveryRoutes);
@@ -50,6 +60,12 @@ startDailyBroadcast();
 app.use('/api/delivery/logs', deliveryLogRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use("/api/bookings", bookingRoutes);
+
+// Payment Routes
+app.use("/api/payment", paymentRoutes);
+
+// Profile Routes
+app.use("/api/auth/profile", profileRoutes);
 // Start server
 app.listen(PORT, () => {
   console.log(`🌐 Server is running at http://localhost:${PORT}`);
